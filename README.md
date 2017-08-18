@@ -1,7 +1,7 @@
-Ansible Role: Dokku
+Ansible-dokku [![Ansible Galaxy](https://img.shields.io/badge/galaxy-dokku-660198.svg)][1]
 ===
 
-Install [dokku](https://github.com/dokku/dokku) on Debian servers.
+> Install [dokku][2] on debian servers.
 
 Requirements
 ---
@@ -21,3 +21,6 @@ License
 ---
 
 MIT
+
+[1]: https://galaxy.ansible.com/ston3o/dokku/
+[2]: https://github.com/dokku/dokku
