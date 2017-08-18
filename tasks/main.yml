@@ -1,0 +1,35 @@
+---
+
+- stat:
+    path: /usr/bin/dokku
+  register: dokku
+
+- include: docker.yml
+
+- block:
+    - name: install apt-transport-https
+      apt: name=apt-transport-https
+
+    - apt_key: url=https://packagecloud.io/gpg.key state=present
+
+    - name: Add dokku repository
+      apt_repository: repo="deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main" state=present
+
+    - shell: echo "dokku dokku/web_config boolean false" | debconf-set-selections
+    - shell: echo "dokku dokku/skip_key_file boolean true" | debconf-set-selections
+
+    - name: Install dokku
+      apt: name=dokku update_cache=true state=latest
+
+    - shell: dokku plugin:install https://github.com/dokku/dokku-redirect.git || true
+      ignore_errors: true
+
+    - shell: dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git || true
+      ignore_errors: true
+
+    - shell: dokku plugin:install https://github.com/dokku/dokku-mysql.git || true
+      ignore_errors: true
+
+    - shell: dokku plugin:install https://github.com/dokku/dokku-mongo.git || true
+      ignore_errors: true
+  when: not dokku.stat.exists

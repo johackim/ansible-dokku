@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: "ston3o"
+  description: "Ansible role to Install dokku on Debian servers."
+  license: MIT
+  min_ansible_version: '2.2.1'
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+  galaxy_tags:
+    - docker
+    - dokku
+dependencies: []
