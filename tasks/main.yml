@@ -21,15 +21,16 @@
     - name: Install dokku
       apt: name=dokku update_cache=true state=latest
 
-    - shell: dokku plugin:install https://github.com/dokku/dokku-redirect.git || true
-      ignore_errors: true
-
-    - shell: dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git || true
-      ignore_errors: true
-
-    - shell: dokku plugin:install https://github.com/dokku/dokku-mysql.git || true
-      ignore_errors: true
-
-    - shell: dokku plugin:install https://github.com/dokku/dokku-mongo.git || true
-      ignore_errors: true
   when: not dokku.stat.exists
+
+- shell: dokku plugin:install https://github.com/dokku/dokku-redirect.git || true
+  ignore_errors: true
+
+- shell: dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git || true
+  ignore_errors: true
+
+- shell: dokku plugin:install https://github.com/dokku/dokku-mysql.git || true
+  ignore_errors: true
+
+- shell: dokku plugin:install https://github.com/dokku/dokku-mongo.git || true
+  ignore_errors: true
