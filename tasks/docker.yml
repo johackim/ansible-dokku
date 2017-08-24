@@ -3,6 +3,7 @@
 - stat:
     path: /usr/bin/docker
   register: docker
+  tags: docker
 
 - block:
     - name: install apt-transport-https package
@@ -25,3 +26,4 @@
         - gnupg2
         - docker-engine
   when: not docker.stat.exists
+  tags: docker
