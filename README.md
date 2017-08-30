@@ -20,7 +20,9 @@ Example Playbook
 License
 ---
 
-MIT
+GNU GPL v3.0
+
+**Free Software, Hell Yeah!**
 
 [1]: https://galaxy.ansible.com/ston3o/dokku/
 [2]: https://github.com/dokku/dokku
